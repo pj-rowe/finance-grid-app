@@ -12,6 +12,22 @@ import activate, { ActivateState } from 'app/modules/account/activate/activate.r
 import password, { PasswordState } from 'app/modules/account/password/password.reducer';
 import settings, { SettingsState } from 'app/modules/account/settings/settings.reducer';
 import passwordReset, { PasswordResetState } from 'app/modules/account/password-reset/password-reset.reducer';
+// prettier-ignore
+import budget, {
+  BudgetState
+} from 'app/entities/budget/budget.reducer';
+// prettier-ignore
+import item, {
+  ItemState
+} from 'app/entities/item/item.reducer';
+// prettier-ignore
+import loan, {
+  LoanState
+} from 'app/entities/loan/loan.reducer';
+// prettier-ignore
+import loanPrincipal, {
+  LoanPrincipalState
+} from 'app/entities/loan-principal/loan-principal.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -25,6 +41,10 @@ export interface IRootState {
   readonly passwordReset: PasswordResetState;
   readonly password: PasswordState;
   readonly settings: SettingsState;
+  readonly budget: BudgetState;
+  readonly item: ItemState;
+  readonly loan: LoanState;
+  readonly loanPrincipal: LoanPrincipalState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -40,6 +60,10 @@ const rootReducer = combineReducers<IRootState>({
   passwordReset,
   password,
   settings,
+  budget,
+  item,
+  loan,
+  loanPrincipal,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
 });
