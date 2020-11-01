@@ -1,0 +1,10 @@
+{
+  "financeGridApp": {
+    "ItemType": {
+      "null": "",
+      "ASSET": "ASSET",
+      "EXPENSE": "EXPENSE",
+      "SAVING": "SAVING"
+    }
+  }
+}

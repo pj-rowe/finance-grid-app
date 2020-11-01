@@ -1,0 +1,24 @@
+{
+  "financeGridApp": {
+    "loanPrincipal": {
+      "home": {
+        "title": "Loan Principals",
+        "createLabel": "Crear nuevo Loan Principal",
+        "createOrEditLabel": "Crear o editar Loan Principal",
+        "notFound": "Ningún Loan Principals encontrado"
+      },
+      "created": "Un nuevo Loan Principal ha sido creado con el identificador {{ param }}",
+      "updated": "Un Loan Principal ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Loan Principal ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Loan Principal {{ id }}?"
+      },
+      "detail": {
+        "title": "Loan Principal"
+      },
+      "date": "Date",
+      "amount": "Amount",
+      "loan": "Loan"
+    }
+  }
+}

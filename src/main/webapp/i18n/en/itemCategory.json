@@ -1,0 +1,10 @@
+{
+  "financeGridApp": {
+    "ItemCategory": {
+      "null": "",
+      "BILL": "BILL",
+      "FUN": "FUN",
+      "MISC": "MISC"
+    }
+  }
+}

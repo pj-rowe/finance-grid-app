@@ -1,0 +1,23 @@
+{
+  "financeGridApp": {
+    "loan": {
+      "home": {
+        "title": "Loans",
+        "createLabel": "Créer un nouveau Loan",
+        "createOrEditLabel": "Créer ou éditer un Loan",
+        "notFound": "Aucun Loan trouvé"
+      },
+      "created": "Un nouveau Loan a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Loan avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Loan avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Loan {{ id }} ?"
+      },
+      "detail": {
+        "title": "Loan"
+      },
+      "name": "Name",
+      "loanPrincipals": "Loan Principals"
+    }
+  }
+}
