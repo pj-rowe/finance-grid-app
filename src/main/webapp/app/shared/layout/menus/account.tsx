@@ -15,7 +15,8 @@ import {
   Paper,
   ClickAwayListener,
   MenuList,
-  MenuItem as MaterialUIMenuItem
+  MenuItem as MaterialUIMenuItem,
+  IconButton
 } from '@material-ui/core';
 import {
   FaUserAstronaut as AccountIcon,
@@ -87,10 +88,10 @@ export const NewAccountMenu = ({ isAuthenticated = false }) => {
       accountButton: {
         marginleft: theme.spacing(1),
         marginRight: theme.spacing(1),
-        color: theme.palette.secondary.main,
-        borderColor: theme.palette.secondary.main,
+        color: theme.palette.success.main,
+        borderColor: theme.palette.success.main,
         '&:hover': {
-          backgroundColor: theme.palette.secondary.main,
+          backgroundColor: theme.palette.success.main,
           color: theme.palette.primary.main,
         },
         '&:focus': {
@@ -99,20 +100,20 @@ export const NewAccountMenu = ({ isAuthenticated = false }) => {
       },
       accountMenu: {
         zIndex: 1,
-        marginTop: '15px'
+        marginTop: '10px'
       },
       accountMenuPaper: {
         backgroundColor: theme.palette.primary.main,
-        color: theme.palette.secondary.main
+        color: theme.palette.success.main
       },
       accountMenuItem: {
         display: 'flex',
         alignItems: 'center',
         fontSize: '0.875rem',
         fontWeight: 'normal',
-        color: theme.palette.secondary.main,
+        color: theme.palette.success.main,
         '&:hover': {
-          color: theme.palette.secondary.main,
+          color: theme.palette.success.main,
           textDecoration: 'underline dotted'
         }
       }
@@ -153,17 +154,15 @@ export const NewAccountMenu = ({ isAuthenticated = false }) => {
 
   return (
     <>
-      <Button
-        variant="outlined"
+      <IconButton
         className={ classes.accountButton }
-        startIcon={<AccountIcon size={24}/>}
         ref={anchorRef}
         onClick={ handleToggle }
         aria-controls={ open ? 'menu-list-grow' : undefined }
         aria-haspopup="true"
       >
-        { translate('global.menu.account.main') }
-      </Button>
+        <AccountIcon size={24}/>
+      </IconButton>
       <Popper
         className={ classes.accountMenu }
         open={open}

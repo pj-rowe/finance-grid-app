@@ -2,7 +2,7 @@ import React from 'react';
 import { DropdownItem } from 'reactstrap';
 import { NavDropdown } from './menu-components';
 import { locales, languages } from 'app/config/translation';
-import { Button, makeStyles, createStyles, Theme, Menu, MenuItem, Popper, Grow, Paper, ClickAwayListener, MenuList } from '@material-ui/core';
+import { Button, makeStyles, createStyles, Theme, MenuItem, Popper, Grow, Paper, ClickAwayListener, MenuList } from '@material-ui/core';
 import { AiOutlineFlag as  LocaleIcon } from 'react-icons/ai';
 
 export const NewLocaleMenu = ({ currentLocale, onClick }: { currentLocale: string; onClick: Function }) => {

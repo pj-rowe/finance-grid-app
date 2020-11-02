@@ -9,13 +9,13 @@ import {
   makeStyles,
   Theme,
   createStyles,
-  Button,
   Grow,
   Paper,
   ClickAwayListener,
   MenuList,
   Popper,
-  MenuItem as MaterialUIMenuItem
+  MenuItem as MaterialUIMenuItem,
+  IconButton
 } from '@material-ui/core';
 import {
   GoSettings as AdminIcon,
@@ -121,7 +121,7 @@ export const NewAdminMenu = ({ showSwagger }) => {
       },
       adminMenu: {
         zIndex: 1,
-        marginTop: '15px'
+        marginTop: '10px'
       },
       adminMenuPaper: {
         backgroundColor: theme.palette.primary.main,
@@ -175,17 +175,15 @@ export const NewAdminMenu = ({ showSwagger }) => {
 
   return (
     <>
-      <Button
-        variant="outlined"
+      <IconButton
         className={ classes.adminButton }
-        startIcon={<AdminIcon size={24}/>}
         ref={anchorRef}
         onClick={ handleToggle }
         aria-controls={ open ? 'menu-list-grow' : undefined }
         aria-haspopup="true"
       >
-        { translate('global.menu.admin.main') }
-      </Button>
+        <AdminIcon size={24}/>
+      </IconButton>
       <Popper
         className={ classes.adminMenu }
         open={open}

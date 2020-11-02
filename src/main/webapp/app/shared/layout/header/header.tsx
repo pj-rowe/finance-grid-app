@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme: Theme) =>
     navSection: {
       display: 'flex'
     },
+    actionsSection: {
+      display: 'flex',
+      marginLeft: '30px'
+    },
     divider: {
       width: '4px',
       marginLeft: theme.spacing(2),
@@ -45,15 +49,15 @@ const useStyles = makeStyles((theme: Theme) =>
     navLink: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
-      color: theme.palette.background.default,
+      color: theme.palette.primary.contrastText,
       textDecoration: 'none',
       '&.active': {
-        color: theme.palette.primary.contrastText,
+        color: theme.palette.background.default,
         textDecoration: 'none',
       },
       '&:hover': {
         color: theme.palette.background.default,
-        textDecoration: 'underline dotted',
+        textDecoration: 'none',
       }
     },
     settingsButton: {
@@ -102,32 +106,31 @@ const Header = (props: IHeaderProps) => {
       <div className={classes.grow}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton
-              edge="start"
-              className={classes.menuButton}
-              color="inherit"
-              aria-label="open drawer"
-            >
-              <MenuIcon />
-            </IconButton>
+            {/*<IconButton*/}
+            {/*  edge="start"*/}
+            {/*  className={classes.menuButton}*/}
+            {/*  color="inherit"*/}
+            {/*  aria-label="open drawer"*/}
+            {/*>*/}
+            {/*  <MenuIcon />*/}
+            {/*</IconButton>*/}
             <Typography variant="h4" noWrap>Finance Grid</Typography>
             <div className={classes.grow} />
             {props.isAuthenticated &&
               <div className={classes.navSection}>
                 <NavLink className={classes.navLink} to="/budget" activeClassName="active">
-                  <Typography variant="h6" noWrap>Budget Boss</Typography>
+                  <Typography variant="h6" noWrap>Budgets</Typography>
                 </NavLink>
                 <NavLink className={classes.navLink} to="/loan" activeClassName="active">
-                  <Typography variant="h6" noWrap>Loan Sentinel</Typography>
+                  <Typography variant="h6" noWrap>Loans</Typography>
                 </NavLink>
                 <NavLink className={classes.navLink} to="/bills" activeClassName="active">
-                  <Typography variant="h6" noWrap>Bill Tracker</Typography>
+                  <Typography variant="h6" noWrap>Bills</Typography>
                 </NavLink>
               </div>
             }
-            <Divider orientation="vertical" className={ classes.divider } flexItem />
-            <div className={classes.navSection}>
-              <NewLocaleMenu currentLocale={ props.currentLocale } onClick={handleLocaleChange} />
+
+            <div className={classes.actionsSection}>
               { props.isAuthenticated && props.isAdmin && <NewAdminMenu showSwagger={props.isSwaggerEnabled} /> }
               <NewAccountMenu isAuthenticated={ props.isAuthenticated } />
             </div>
