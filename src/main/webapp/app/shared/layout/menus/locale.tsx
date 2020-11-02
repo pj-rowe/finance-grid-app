@@ -10,10 +10,16 @@ export const NewLocaleMenu = ({ currentLocale, onClick }: { currentLocale: strin
   const classes = makeStyles((theme: Theme) =>
     createStyles({
       localeButton: {
+        marginleft: theme.spacing(1),
+        marginRight: theme.spacing(1),
         color: theme.palette.success.main,
+        borderColor: theme.palette.success.main,
         '&:hover': {
           backgroundColor: theme.palette.success.main,
           color: theme.palette.primary.main,
+        },
+        '&:focus': {
+          outline: 0
         }
       },
       localeMenu: {
@@ -23,6 +29,9 @@ export const NewLocaleMenu = ({ currentLocale, onClick }: { currentLocale: strin
       localeMenuPaper: {
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.success.main
+      },
+      localeMenuItem: {
+        fontSize: '0.875rem'
       }
     })
   )();
@@ -62,6 +71,7 @@ export const NewLocaleMenu = ({ currentLocale, onClick }: { currentLocale: strin
   return Object.keys(languages).length > 1 ? (
     <>
       <Button
+        variant="outlined"
         className={ classes.localeButton }
         startIcon={<LocaleIcon size={24}/>}
         ref={anchorRef}
@@ -88,9 +98,12 @@ export const NewLocaleMenu = ({ currentLocale, onClick }: { currentLocale: strin
                     locales.map(locale => (
                       <MenuItem
                         key={languages[locale].name}
+                        className={ classes.localeMenuItem }
                         value={locale}
                         onClick={ (ev) => { onClick({ target: { value: locale }}); handleClose(ev) } }
-                      >{ languages[locale].name }</MenuItem>
+                      >
+                        { languages[locale].name }
+                      </MenuItem>
                     ))
                   }
                 </MenuList>

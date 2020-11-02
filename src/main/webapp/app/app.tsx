@@ -36,19 +36,20 @@ export const App = (props: IAppProps) => {
     <ThemeProvider theme={AppTheme}>
       <CssBaseline />
       <Router basename={baseHref}>
+        <ErrorBoundary>
+          <Header
+            isAuthenticated={props.isAuthenticated}
+            isAdmin={props.isAdmin}
+            currentLocale={props.currentLocale}
+            onLocaleChange={props.setLocale}
+            ribbonEnv={props.ribbonEnv}
+            isInProduction={props.isInProduction}
+            isSwaggerEnabled={props.isSwaggerEnabled}
+          />
+        </ErrorBoundary>
         <div className="app-container" style={{ paddingTop }}>
           <ToastContainer position={toast.POSITION.TOP_LEFT} className="toastify-container" toastClassName="toastify-toast" />
-          <ErrorBoundary>
-            <Header
-              isAuthenticated={props.isAuthenticated}
-              isAdmin={props.isAdmin}
-              currentLocale={props.currentLocale}
-              onLocaleChange={props.setLocale}
-              ribbonEnv={props.ribbonEnv}
-              isInProduction={props.isInProduction}
-              isSwaggerEnabled={props.isSwaggerEnabled}
-            />
-          </ErrorBoundary>
+
           <div className="container-fluid view-container" id="app-view-container">
             <Card className="jh-card">
               <ErrorBoundary>

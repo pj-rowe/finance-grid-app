@@ -4,23 +4,12 @@ import React, { useState } from 'react';
 import { Translate, Storage } from 'react-jhipster';
 import { Navbar, Nav, NavbarToggler, NavbarBrand, Collapse } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  FcOrgUnit as BrandIcon,
-  AiOutlineAppstore as HomeIcon,
-  FaBalanceScaleLeft as BudgetIcon,
-  AiOutlineCalendar as BillsIcon,
-  AiOutlineFundView as LoansIcon,
-  AiOutlineExperiment as DinneryIcon,
-  AiOutlineVideoCamera as MovieWatchlistIcon,
-  GoSettings as SettingsIcon,
-  GiExitDoor as LogoutIcon
-} from "react-icons/all";
 
 import { NavLink as Link, NavLink } from 'react-router-dom';
 import LoadingBar from 'react-redux-loading-bar';
 
 import { Home, Brand } from './header-components';
-import {AdminMenu, EntitiesMenu, AccountMenu, LocaleMenu, NewLocaleMenu } from '../menus';
+import {AdminMenu, EntitiesMenu, AccountMenu, LocaleMenu, NewLocaleMenu, NewAdminMenu, NewAccountMenu} from '../menus';
 import { makeStyles, Theme, createStyles, AppBar, Toolbar, IconButton, Typography, List, Divider, Button } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -43,15 +32,15 @@ const useStyles = makeStyles((theme: Theme) =>
       marginRight: theme.spacing(2)
     },
     navSection: {
-      display: 'flex',
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1)
+      display: 'flex'
     },
     divider: {
       width: '4px',
       marginLeft: theme.spacing(2),
       marginRight: theme.spacing(2),
-      backgroundColor: theme.palette.background.default
+      backgroundColor: theme.palette.background.default,
+      marginTop: '10px',
+      marginBottom: '10px'
     },
     navLink: {
       marginLeft: theme.spacing(1),
@@ -123,54 +112,45 @@ const Header = (props: IHeaderProps) => {
             </IconButton>
             <Typography variant="h4" noWrap>Finance Grid</Typography>
             <div className={classes.grow} />
-            <div className={classes.navSection}>
-              <NavLink className={ classes.navLink } to="/budget" activeClassName="active">
-                <Typography variant="h6" noWrap>Budget Boss</Typography>
-              </NavLink>
-              <NavLink className={ classes.navLink }  to="/loan" activeClassName="active">
-                <Typography variant="h6" noWrap>Loan Sentinel</Typography>
-              </NavLink>
-              <NavLink className={ classes.navLink }  to="/bills" activeClassName="active">
-                <Typography variant="h6" noWrap>Bill Tracker</Typography>
-              </NavLink>
-            </div>
+            {props.isAuthenticated &&
+              <div className={classes.navSection}>
+                <NavLink className={classes.navLink} to="/budget" activeClassName="active">
+                  <Typography variant="h6" noWrap>Budget Boss</Typography>
+                </NavLink>
+                <NavLink className={classes.navLink} to="/loan" activeClassName="active">
+                  <Typography variant="h6" noWrap>Loan Sentinel</Typography>
+                </NavLink>
+                <NavLink className={classes.navLink} to="/bills" activeClassName="active">
+                  <Typography variant="h6" noWrap>Bill Tracker</Typography>
+                </NavLink>
+              </div>
+            }
             <Divider orientation="vertical" className={ classes.divider } flexItem />
             <div className={classes.navSection}>
               <NewLocaleMenu currentLocale={ props.currentLocale } onClick={handleLocaleChange} />
-              <Button
-                className={ classes.settingsButton }
-                startIcon={ <SettingsIcon size={24}/> }
-              >
-                Admin
-              </Button>
-              <Button
-                className={ classes.logoutButton }
-                startIcon={ <LogoutIcon size={24}/> }
-                // onClick={ async () => { await Auth.signOut(); window.location.reload(); } }
-              >
-                Sign Out
-              </Button>
+              { props.isAuthenticated && props.isAdmin && <NewAdminMenu showSwagger={props.isSwaggerEnabled} /> }
+              <NewAccountMenu isAuthenticated={ props.isAuthenticated } />
             </div>
           </Toolbar>
         </AppBar>
       </div>
-      <div id="app-header">
-        {renderDevRibbon()}
-        <LoadingBar className="loading-bar" />
-        <Navbar dark expand="sm" fixed="top" className="jh-navbar">
-          <NavbarToggler aria-label="Menu" onClick={toggleMenu} />
-          <Brand />
-          <Collapse isOpen={menuOpen} navbar>
-            <Nav id="header-tabs" className="ml-auto" navbar>
-              <Home />
-              {props.isAuthenticated && <EntitiesMenu />}
-              {props.isAuthenticated && props.isAdmin && <AdminMenu showSwagger={props.isSwaggerEnabled} />}
-              <LocaleMenu currentLocale={props.currentLocale} onClick={handleLocaleChange} />
-              <AccountMenu isAuthenticated={props.isAuthenticated} />
-            </Nav>
-          </Collapse>
-        </Navbar>
-      </div>
+      {/*<div id="app-header">*/}
+      {/*  {renderDevRibbon()}*/}
+      {/*  <LoadingBar className="loading-bar" />*/}
+      {/*  <Navbar dark expand="sm" fixed="top" className="jh-navbar">*/}
+      {/*    <NavbarToggler aria-label="Menu" onClick={toggleMenu} />*/}
+      {/*    <Brand />*/}
+      {/*    <Collapse isOpen={menuOpen} navbar>*/}
+      {/*      <Nav id="header-tabs" className="ml-auto" navbar>*/}
+      {/*        <Home />*/}
+      {/*        {props.isAuthenticated && <EntitiesMenu />}*/}
+      {/*        {props.isAuthenticated && props.isAdmin && <AdminMenu showSwagger={props.isSwaggerEnabled} />}*/}
+      {/*        <LocaleMenu currentLocale={props.currentLocale} onClick={handleLocaleChange} />*/}
+      {/*        <AccountMenu isAuthenticated={props.isAuthenticated} />*/}
+      {/*      </Nav>*/}
+      {/*    </Collapse>*/}
+      {/*  </Navbar>*/}
+      {/*</div>*/}
     </>
   );
 };
