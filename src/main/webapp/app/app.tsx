@@ -7,6 +7,7 @@ import { Card } from 'reactstrap';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { hot } from 'react-hot-loader';
+import { CssBaseline, ThemeProvider } from '@material-ui/core';
 
 import { IRootState } from 'app/shared/reducers';
 import { getSession } from 'app/shared/reducers/authentication';
@@ -18,6 +19,7 @@ import { hasAnyAuthority } from 'app/shared/auth/private-route';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import { AUTHORITIES } from 'app/config/constants';
 import AppRoutes from 'app/routes';
+import AppTheme from './app-theme';
 
 const baseHref = document.querySelector('base').getAttribute('href').replace(/\/$/, '');
 
@@ -31,30 +33,33 @@ export const App = (props: IAppProps) => {
 
   const paddingTop = '60px';
   return (
-    <Router basename={baseHref}>
-      <div className="app-container" style={{ paddingTop }}>
-        <ToastContainer position={toast.POSITION.TOP_LEFT} className="toastify-container" toastClassName="toastify-toast" />
-        <ErrorBoundary>
-          <Header
-            isAuthenticated={props.isAuthenticated}
-            isAdmin={props.isAdmin}
-            currentLocale={props.currentLocale}
-            onLocaleChange={props.setLocale}
-            ribbonEnv={props.ribbonEnv}
-            isInProduction={props.isInProduction}
-            isSwaggerEnabled={props.isSwaggerEnabled}
-          />
-        </ErrorBoundary>
-        <div className="container-fluid view-container" id="app-view-container">
-          <Card className="jh-card">
-            <ErrorBoundary>
-              <AppRoutes />
-            </ErrorBoundary>
-          </Card>
-          <Footer />
+    <ThemeProvider theme={AppTheme}>
+      <CssBaseline />
+      <Router basename={baseHref}>
+        <div className="app-container" style={{ paddingTop }}>
+          <ToastContainer position={toast.POSITION.TOP_LEFT} className="toastify-container" toastClassName="toastify-toast" />
+          <ErrorBoundary>
+            <Header
+              isAuthenticated={props.isAuthenticated}
+              isAdmin={props.isAdmin}
+              currentLocale={props.currentLocale}
+              onLocaleChange={props.setLocale}
+              ribbonEnv={props.ribbonEnv}
+              isInProduction={props.isInProduction}
+              isSwaggerEnabled={props.isSwaggerEnabled}
+            />
+          </ErrorBoundary>
+          <div className="container-fluid view-container" id="app-view-container">
+            <Card className="jh-card">
+              <ErrorBoundary>
+                <AppRoutes />
+              </ErrorBoundary>
+            </Card>
+            <Footer />
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </ThemeProvider>
   );
 };
 
