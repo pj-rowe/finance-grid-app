@@ -1,7 +1,6 @@
 package org.duttydev.financegrid.domain
 
 import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.DBRef
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.Field
 import java.io.Serializable
@@ -19,7 +18,6 @@ data class Loan(
     @Field("name")
     var name: String? = null,
 
-    @DBRef
     @Field("loanPrincipals")
     var loanPrincipals: MutableSet<LoanPrincipal> = mutableSetOf()
 
@@ -28,13 +26,13 @@ data class Loan(
 
     fun addLoanPrincipals(loanPrincipal: LoanPrincipal): Loan {
         this.loanPrincipals.add(loanPrincipal)
-        loanPrincipal.loan = this
+//        loanPrincipal.loan = this
         return this
     }
 
     fun removeLoanPrincipals(loanPrincipal: LoanPrincipal): Loan {
         this.loanPrincipals.remove(loanPrincipal)
-        loanPrincipal.loan = null
+//        loanPrincipal.loan = null
         return this
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

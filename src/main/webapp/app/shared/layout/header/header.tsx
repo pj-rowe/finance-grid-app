@@ -122,7 +122,7 @@ const Header = (props: IHeaderProps) => {
                   <Typography variant="h6" noWrap>Budgets</Typography>
                 </NavLink>
                 <NavLink className={classes.navLink} to="/loan" activeClassName="active">
-                  <Typography variant="h6" noWrap>Loans</Typography>
+                  <Typography variant="h6" noWrap>Debts</Typography>
                 </NavLink>
                 <NavLink className={classes.navLink} to="/bills" activeClassName="active">
                   <Typography variant="h6" noWrap>Bills</Typography>

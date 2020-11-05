@@ -1,9 +1,5 @@
 package org.duttydev.financegrid.domain
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties
-import org.springframework.data.annotation.Id
-import org.springframework.data.mongodb.core.mapping.DBRef
-import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.Field
 import java.io.Serializable
 import java.math.BigDecimal
@@ -13,22 +9,22 @@ import javax.validation.constraints.*
 /**
  * A LoanPrincipal.
  */
-@Document(collection = "loan_principal")
+// @Document(collection = "loan_principal")
 data class LoanPrincipal(
-    @Id
-    var id: String? = null,
+//    @Id
+//    var id: String? = null,
     @get: NotNull
     @Field("date")
     var date: LocalDate? = null,
 
     @get: NotNull
     @Field("amount")
-    var amount: BigDecimal? = null,
+    var amount: BigDecimal? = null
 
-    @DBRef
-    @Field("loan")
-    @JsonIgnoreProperties(value = ["loanPrincipals"], allowSetters = true)
-    var loan: Loan? = null
+//    @DBRef
+//    @Field("loan")
+//    @JsonIgnoreProperties(value = ["loanPrincipals"], allowSetters = true)
+//    var loan: Loan? = null
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 ) : Serializable {
@@ -38,14 +34,13 @@ data class LoanPrincipal(
         if (this === other) return true
         if (other !is LoanPrincipal) return false
 
-        return id != null && other.id != null && id == other.id
+        return date != null && other.date != null && date == other.date
     }
 
     override fun hashCode() = 31
 
     override fun toString() = "LoanPrincipal{" +
-        "id=$id" +
-        ", date='$date'" +
+        "date='$date'" +
         ", amount=$amount" +
         "}"
 
