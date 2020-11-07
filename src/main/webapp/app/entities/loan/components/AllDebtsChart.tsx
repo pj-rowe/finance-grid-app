@@ -1,7 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import { Grid, Button, Typography, makeStyles, Theme, createStyles } from '@material-ui/core';
-import { GoPrimitiveDot as DotIcon } from 'react-icons/all';
+import { BiCheckboxSquare as DotIcon } from 'react-icons/all';
 
 const debtLabelBtnStyles = makeStyles((theme: Theme) =>
   createStyles({
