@@ -118,15 +118,15 @@ const Header = (props: IHeaderProps) => {
             <div className={classes.grow} />
             {props.isAuthenticated &&
               <div className={classes.navSection}>
-                <NavLink className={classes.navLink} to="/budget" activeClassName="active">
-                  <Typography variant="h6" noWrap>Budgets</Typography>
-                </NavLink>
+                {/*<NavLink className={classes.navLink} to="/budget" activeClassName="active">*/}
+                {/*  <Typography variant="h6" noWrap>Budgets</Typography>*/}
+                {/*</NavLink>*/}
                 <NavLink className={classes.navLink} to="/loan" activeClassName="active">
                   <Typography variant="h6" noWrap>Debts</Typography>
                 </NavLink>
-                <NavLink className={classes.navLink} to="/bills" activeClassName="active">
-                  <Typography variant="h6" noWrap>Bills</Typography>
-                </NavLink>
+                {/*<NavLink className={classes.navLink} to="/bills" activeClassName="active">*/}
+                {/*  <Typography variant="h6" noWrap>Bills</Typography>*/}
+                {/*</NavLink>*/}
               </div>
             }
 
