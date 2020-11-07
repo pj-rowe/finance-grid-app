@@ -1,5 +1,8 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+import { Grid, Button, Typography } from '@material-ui/core';
+import { GoPrimitiveDot as DotIcon } from 'react-icons/all';
+
 
 const AllDebtsChart = ({ loanList }) => {
 
@@ -18,7 +21,7 @@ const AllDebtsChart = ({ loanList }) => {
         label: loan.name,
         fill: false,
         backgroundColor: `rgb(${red}, ${blue}, ${green})`,
-        borderColor: `rgba(${red}, ${blue}, ${green}, 0.2)`,
+        borderColor: `rgba(${red}, ${blue}, ${green}, 0.5)`,
         data: loan.loanPrincipals
           .slice()
           .sort((a, b) => b.date.localeCompare(a.date))
@@ -31,6 +34,9 @@ const AllDebtsChart = ({ loanList }) => {
   };
 
   const options = {
+    legend: {
+      display: false
+    },
     scales: {
       yAxes: [
         {
@@ -44,6 +50,17 @@ const AllDebtsChart = ({ loanList }) => {
 
   return (
     <div style={{ marginBottom: '5rem', marginTop: '5rem' }}>
+      <Grid container justify="center" spacing={1}>
+        {
+          datasets.map(d => (
+            <Grid item>
+              <Button variant="outlined" color="secondary" size="small" startIcon={ <DotIcon />} style={{ color: d.backgroundColor, borderColor: d.borderColor }}>
+                <Typography variant="body2">{ d.label }</Typography>
+              </Button>
+            </Grid>
+          ))
+        }
+      </Grid>
       <Line data={chartData} options={options} />
     </div>
   )
