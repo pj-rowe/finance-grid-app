@@ -13,7 +13,6 @@ import { AiOutlineAppstoreAdd } from 'react-icons/all';
 import { ITEMS_PER_PAGE } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { Paper, Typography, Button, Box } from '@material-ui/core';
-import { Line, Bar, Doughnut } from 'react-chartjs-2';
 import TotalDebtChart from 'app/entities/loan/components/TotalDebtChart';
 import AllDebtsChart from 'app/entities/loan/components/AllDebtsChart';
 
